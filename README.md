@@ -56,4 +56,4 @@ Development requirements:
   
 <!-- NOTE ALERT  -->
 > [!WARNING]
-> _We understand there are many wonderful component libraries and state management tools available, but we're looking to evaluate your understanding of CSS, state, and memoization._
+> _We understand there are many wonderful component libraries and state management tools available, but we're looking to evaluate your fundamental understanding of CSS, state, and memoization in React._
