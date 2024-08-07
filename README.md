@@ -53,3 +53,7 @@ Development requirements:
 - No additional CSS frameworks (e.g. Tailwind CSS, etc.)
 - No UI Component libraries (e.g. Material UI, Chakra UI, Bootstrap React, etc.)
 - No additional state management libraries (e.g. Redux, Recoil, etc.)
+  
+<!-- NOTE ALERT  -->
+> [!WARNING]
+> _We understand there are many wonderful component libraries and state management tools available, but we're looking to evaluate your understanding of CSS, state, and memoization._
