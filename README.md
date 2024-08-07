@@ -2,25 +2,40 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+1. Fork this repository and clone it to your local machine.
+2. Install dependencies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    # or
+    bun install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000).
+3. Then, run the development server:
+
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    # or
+    pnpm dev
+    # or
+    bun dev
+    ```
+
+4. Open [http://localhost:3000](http://localhost:3000).
 
 ## The Challenge
 
 ![preview](./preview.jpg)
 
 Your challenge is to build out this mortgage repayment calculator and get it looking as close to the design as possible. This project has already been configured with Bootstrap (with custom SCSS variables), and we've started the first client component to demonstrate how we expect components and CSS to be structured.
+
+The design files are in the `/design` folder. You will find `.jpg` image files for desktop and mobiles designs, as well as a Figma file. Image/font assets are already optimized and included in the `/public` folder.
 
 ## Requirements
 
