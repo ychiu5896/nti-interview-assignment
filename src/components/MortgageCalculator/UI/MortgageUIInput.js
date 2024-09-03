@@ -9,6 +9,8 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
         if(formRef.current) {
             formRef.current.reset();
         }
+        resetErrorsMissingFields();
+        removeRadioChange();
         setErrors({});
     }
 
@@ -17,17 +19,23 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
         const data = Object.fromEntries(formData.entries());
         let formErrors = {};
 
+        resetErrorsMissingFields();
+
         if (!data.mortgageAmount) {
             formErrors.mortgageAmount = "This field is required";
+            document.querySelector('.mortgageAmount').classList.add('field-missing');
         }
         if (!data.mortgageTerm) {
             formErrors.mortgageTerm = "This field is required";
+            document.querySelector('.mortgageTerm').classList.add('field-missing');
         }
         if (!data.interestRate) {
             formErrors.interestRate = "This field is required";
+            document.querySelector('.interestRate').classList.add('field-missing');
         }
         if (!data.mortgageType) {
             formErrors.mortgageType = "This field is required";
+            document.querySelector('.mortgageType').classList.add('field-missing');
         }
 
         setErrors(formErrors);
@@ -41,8 +49,28 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
         }
     }
 
+    const handleRadioChange = (e) => {
+        removeRadioChange();
+        const selectedContainer = e.target.closest('.selector-container');
+        if (selectedContainer) {
+            selectedContainer.classList.add('selected');
+        }
+    };
+
+    const resetErrorsMissingFields = () => {
+        document.querySelectorAll('.input-set').forEach(container => {
+            container.classList.remove('field-missing');
+        })
+    }
+    
+    const removeRadioChange = () => {
+        document.querySelectorAll('.selector-container').forEach(container => {
+            container.classList.remove('selected');
+        });
+    }
+
     return (
-        <form className="mortgage-calculator" ref={formRef} onSubmit={handleSubmitWithValidation}>
+        <form className="UI-container" ref={formRef} onSubmit={handleSubmitWithValidation}>
             <div className="UIheader">
                 <div>
                     Mortgage Calculator
@@ -57,37 +85,39 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
                 </label>
                 <div className="text-field">
                     <div className="input-units">
-                        $
+                        £
                     </div>
-                    <input type="text" id="mortgageAmount" name="mortgageAmount"/>
+                    <input type="text" id="mortgageAmount" name="mortgageAmount"  className="field-text"/>
                 </div>
                 {errors.mortgageAmount && <div className="error">{errors.mortgageAmount}</div>}
             </div>
-            <div className="input-set">
-                <label className="form-label">
-                    Mortgage Term
-                </label>
-                <div className="text-field">
-                    <input type="text" id="mortgageTerm" name="mortgageTerm"/>
-                    <div className="input-units">
-                        years
+            <div className="term-rate-container">
+                <div className="mortgageTerm input-set">
+                    <label className="form-label">
+                        Mortgage Term
+                    </label>
+                    <div className="text-field">
+                        <input type="text" id="mortgageTerm" name="mortgageTerm" className="field-text"/>
+                        <div className="input-units">
+                            years
+                        </div>
                     </div>
+                    {errors.mortgageTerm && <div className="error">{errors.mortgageTerm}</div>}
                 </div>
-                {errors.mortgageTerm && <div className="error">{errors.mortgageTerm}</div>}
-            </div>
-            <div className="input-set">
-                <label className="form-label">
-                    Interest Rate
-                </label>
-                <div className="text-field">
-                    <input type="text" id="interestRate" name="interestRate"/>
-                    <div className="input-units">
-                        %
+                <div className="interestRate input-set">
+                    <label className="form-label">
+                        Interest Rate
+                    </label>
+                    <div className="text-field">
+                        <input type="text" id="interestRate" name="interestRate" className="field-text"/>
+                        <div className="input-units">
+                            %
+                        </div>
                     </div>
+                    {errors.interestRate && <div className="error">{errors.interestRate}</div>}
                 </div>
-                {errors.interestRate && <div className="error">{errors.interestRate}</div>}
             </div>
-            <div className="input-set">
+            <div className="mortgageType input-set">
                 <label className="form-label">
                     Mortgage Type
                 </label>
@@ -99,6 +129,7 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
                                 name="mortgageType" 
                                 value="repayment" 
                                 id="repayment"
+                                onChange={handleRadioChange}
                             />
                             <span className="radio-label">Repayment</span>
                         </div>
@@ -111,6 +142,7 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
                                 name="mortgageType" 
                                 value="interestOnly" 
                                 id="interestOnly"
+                                onChange={handleRadioChange}
                             />
                             <span className="radio-label">Interest Only</span>
                         </div>
@@ -118,10 +150,12 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
                 </div>
                 {errors.mortgageType && <div className="error">{errors.mortgageType}</div>}
             </div>
-            <button className="form-submit" type="submit">
-                <img src="/images/icon-calculator.svg" alt="Calculator Icon" />
-                Calculate Repayments
-            </button>
+            <div className="form-submit">
+                <button type="submit">
+                    <img src="/images/icon-calculator.svg" alt="Calculator Icon" />
+                    Calculate Repayments
+                </button>
+            </div>
         </form>
     );
 }

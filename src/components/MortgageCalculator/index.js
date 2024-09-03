@@ -26,14 +26,20 @@ const MortgageCalculator = ({ ...props }) => {
 
 	return (
 		<div className="mortgage-calculator d-flex flex-column flex-md-row bg-white rounded-4 w-100">
-			<MortgageUIInput formRef={formRef} handleSubmit={handleSubmit}/>
-			{!isDataEmpty(formData) && ( //prevent component when there are no inputs
-				<MortgageService formData={formData} handleResult={handleResult}/>
-			)}
-			{isDataEmpty(result) ? 
-				(<DisplayDefaultResult/>) : 
-				( <DisplayMortgageResult result={result}/>
-			)}
+			<div className="mortgageuiinput">
+				<MortgageUIInput formRef={formRef} handleSubmit={handleSubmit}/>
+			</div>
+			<div className="mortgageservice">
+				{!isDataEmpty(formData) && ( //prevent component when there are no inputs
+					<MortgageService formData={formData} handleResult={handleResult}/>
+				)}
+			</div>
+			<div className="displayresult">
+				{isDataEmpty(result) ? 
+					(<DisplayDefaultResult/>) : 
+					( <DisplayMortgageResult result={result}/>
+				)}
+			</div>
 		</div>
 	);
 };

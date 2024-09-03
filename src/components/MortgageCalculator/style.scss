@@ -1,5 +1,13 @@
 .mortgage-calculator {
     max-width: 1008px;
     min-height: 606px;
+    display: flex;
     // Be sure to nest any custom classes on child elements to avoid conflicts
+    .mortgageuiinput {
+        width: 50%;
+    }
+    .displayresult {
+        width: 50%;
+    }
+
 }
