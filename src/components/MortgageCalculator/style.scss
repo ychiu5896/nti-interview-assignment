@@ -5,9 +5,15 @@
     // Be sure to nest any custom classes on child elements to avoid conflicts
     .mortgageuiinput {
         width: 50%;
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
     .displayresult {
         width: 50%;
+        @media (max-width: 768px) {
+            width: 100%;
+        }
     }
 
 }

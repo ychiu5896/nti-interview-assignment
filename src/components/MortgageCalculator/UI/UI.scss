@@ -22,6 +22,11 @@
             background-color: #fff;
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: start;
+        }
     }
 
     .term-rate-container {
@@ -29,6 +34,14 @@
         flex-direction: row;
         .mortgageTerm {
             margin-right: 12px;
+        }
+        @media (max-width: 768px) {
+            flex-direction: column;
+
+            .mortgageTerm {
+                margin-right: 0;
+                margin-bottom: 12px;
+            }
         }
     }
 
@@ -116,23 +129,25 @@
     .form-submit {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         margin-top: 16px;
+        
         button {
             font-weight: bold;
             border: none;
             background-color: #D8DB2F;
             width: 100%;
+            max-width: 300px; 
             height: 50px;
             border-radius: 30px;
-            padding: 0;    // Remove internal padding if needed
+            padding: 0;    
             font-family: Plus Jakarta Sans Bold;
             display: flex;
             align-items: center;
             justify-content: center;
     
             img {
-                margin-right: 8px;  // Add space between icon and text
+                margin-right: 8px; 
             }
         }
     }
