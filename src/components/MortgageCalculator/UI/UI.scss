@@ -1,0 +1,85 @@
+.mortgage-calculator {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    padding: 24px;
+  
+    .UIheader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        div {
+            font-size: 56px;
+            font-family: Plus Jakarta Sans Bold;
+        }
+        button {
+            border: transparent;
+            background-color: #fff;
+            text-decoration: underline;
+        }
+    }
+
+    .mortgage-type {
+        .selector-container {
+            border: solid 1px;
+            padding: 12px;
+            margin: 8px 0px;
+            .mortgage-type-selector {
+                display: flex;
+                flex-direction: row;
+                width: 200px;
+                input[type="radio"] {
+                    padding:auto;
+                    margin: auto;
+                    width: 20%;
+                    height: 20%;
+                    accent-color: #D8DB2F;
+                }
+                .radio-label {
+                    width:80%;
+                }
+            }
+        }
+    }
+
+
+    .text-field {
+        display: flex;
+        flex-direction: row;
+        border: solid 1px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .form-label {
+        font-size: 16px;
+        font-family: Plus Jakarta Sans Medium;
+    }
+
+    .input-units {
+        background-color: #E4F4FD;
+        padding: 12px;
+    }
+
+    input {
+        flex:1;
+        border: none;
+        width: 100%;
+        padding: 12px;
+
+    }
+
+    .form-submit {
+        border: none;
+        background-color: #D8DB2F;
+        width: 80%;
+        align-items: center;
+    }
+
+    .input-set {
+        margin: 8px 0px;
+    }
+
+}
+  

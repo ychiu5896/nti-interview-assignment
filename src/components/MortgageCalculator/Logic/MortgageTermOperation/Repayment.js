@@ -1,4 +1,5 @@
 import { Operations } from "./Operations";
+import formatToCurrency from "./FormatLogic";
 
 export class Repayment extends Operations {
 
@@ -7,9 +8,12 @@ export class Repayment extends Operations {
         const monthlyInterestRate = (parseFloat(interestRate) / 100) / 12
         const totalPayments = parseInt(mortgageTerm) * 12;
         const monthlyPayments = (principle * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
-        const monthlyPaymentsFormatted = monthlyPayments.toFixed(2);
         const totalCost = monthlyPayments * totalPayments;
-        const totalCostFormatted = totalCost.toFixed(2);
+
+
+        const monthlyPaymentsFormatted = formatToCurrency(monthlyPayments);
+        const totalCostFormatted = formatToCurrency(totalCost);
+
         return {
             monthly: monthlyPaymentsFormatted, 
             total: totalCostFormatted

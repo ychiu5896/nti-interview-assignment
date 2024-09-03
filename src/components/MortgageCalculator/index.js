@@ -3,6 +3,8 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import "./style.scss";
 import MortgageUIInput from "./UI/MortgageUIInput";
 import MortgageService from "./Logic/MortgageService";
+import DisplayMortgageResult from "./Display/DisplayMortgageResult";
+import DisplayDefaultResult from "./Display/DisplayDefaultResult";
 
 const MortgageCalculator = ({ ...props }) => {
 	const formRef = useRef(null);
@@ -20,18 +22,18 @@ const MortgageCalculator = ({ ...props }) => {
 		setResult(result);
 	}
 
-	const isFormDataEmpty = (formData) => Object.keys(formData).length === 0;
-
-	console.log(formData);
-	console.log(result);
+	const isDataEmpty = (data) => Object.keys(data).length === 0;
 
 	return (
 		<div className="mortgage-calculator d-flex flex-column flex-md-row bg-white rounded-4 w-100">
 			<MortgageUIInput formRef={formRef} handleSubmit={handleSubmit}/>
-			{!isFormDataEmpty(formData) && (
+			{!isDataEmpty(formData) && ( //prevent component when there are no inputs
 				<MortgageService formData={formData} handleResult={handleResult}/>
 			)}
-			{/* <DisplayMortgageResult/> */}
+			{isDataEmpty(result) ? 
+				(<DisplayDefaultResult/>) : 
+				( <DisplayMortgageResult result={result}/>
+			)}
 		</div>
 	);
 };
