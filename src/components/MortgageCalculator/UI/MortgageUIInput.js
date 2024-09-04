@@ -35,16 +35,16 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
             formErrors.mortgageTerm = "This field is required";
             document.querySelector('.mortgageTerm').classList.add('field-missing');
         }else if(isNaN(parseFloat(data.mortgageTerm))) {
-            formErrors.mortgageAmount = "Please enter a valid number";
-            document.querySelector('.mortgageAmount').classList.add('field-missing');
+            formErrors.mortgageTerm = "Please enter a valid number";
+            document.querySelector('.mortgageTerm').classList.add('field-missing');
         }
 
         if (!data.interestRate) {
             formErrors.interestRate = "This field is required";
             document.querySelector('.interestRate').classList.add('field-missing');
         }else if(isNaN(parseFloat(data.interestRate))) {
-            formErrors.mortgageAmount = "Please enter a valid number";
-            document.querySelector('.mortgageAmount').classList.add('field-missing');
+            formErrors.interestRate = "Please enter a valid number";
+            document.querySelector('.interestRate').classList.add('field-missing');
         }
 
         if (!data.mortgageType) {
