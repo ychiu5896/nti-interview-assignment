@@ -14,25 +14,39 @@ const MortgageUIInput = ({ formRef, handleSubmit }) => {
         setErrors({});
     }
 
-    const validateForm = () => {
+    const validateForm = () => { //validate require fields and are numbers
         const formData = new FormData(formRef.current);
         const data = Object.fromEntries(formData.entries());
         let formErrors = {};
 
         resetErrorsMissingFields();
 
+        
         if (!data.mortgageAmount) {
             formErrors.mortgageAmount = "This field is required";
             document.querySelector('.mortgageAmount').classList.add('field-missing');
+        }else if(isNaN(parseFloat(data.mortgageAmount))) {
+            console.log(isNaN(parseFloat(data.mortgageAmount)));
+            formErrors.mortgageAmount = "Please enter a valid number";
+            document.querySelector('.mortgageAmount').classList.add('field-missing');
         }
+
         if (!data.mortgageTerm) {
             formErrors.mortgageTerm = "This field is required";
             document.querySelector('.mortgageTerm').classList.add('field-missing');
+        }else if(isNaN(parseFloat(data.mortgageTerm))) {
+            formErrors.mortgageAmount = "Please enter a valid number";
+            document.querySelector('.mortgageAmount').classList.add('field-missing');
         }
+
         if (!data.interestRate) {
             formErrors.interestRate = "This field is required";
             document.querySelector('.interestRate').classList.add('field-missing');
+        }else if(isNaN(parseFloat(data.interestRate))) {
+            formErrors.mortgageAmount = "Please enter a valid number";
+            document.querySelector('.mortgageAmount').classList.add('field-missing');
         }
+
         if (!data.mortgageType) {
             formErrors.mortgageType = "This field is required";
             document.querySelector('.mortgageType').classList.add('field-missing');
